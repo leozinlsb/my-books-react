@@ -30,22 +30,22 @@ function Search() {
         <SearchContainer>
             <Title>Já sabe por onde começar?</Title>
             <Subtitle>Encontre seu livro em nossa estante.</Subtitle>
-            <Input 
+            <Input
                 placeholder='Escreva sua próxima leitura'
                 onBlur={event => {
                     const typedText = event.target.value
-                    const searchResults = books.filter( book => book.name.includes(typedText))
+                    const searchResults = books.filter(book => book.name.includes(typedText))
                     setResearchedBooks(searchResults)
                 }}
             />
-            {researchedBooks.map( book => (
+            {researchedBooks.map(book => (
                 <div>
                     <p>{book.name}</p>
-                    <img src={book.src} alt='capa do livro'/>
+                    <img src={book.src} alt='capa do livro' key={book.id} />
                 </div>
             ))}
         </SearchContainer>
-        
+
     )
 }
 
