@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
-const Opcoes = styled.ul`
+const Options = styled.ul`
     display: flex;
 
 `
 
-const Opcao = styled.li`
+const Option = styled.li`
     font-size: 16px;
     display: flex;
     justify-content: center;
@@ -17,16 +17,16 @@ const Opcao = styled.li`
     min-width: 120px;
     color: #FBFBF9;
 `
-const textoOpcoes = ['CATEGORIAS', 'FAVORITOS', 'MINHA ESTANTE']
+const textOptions = ['CATEGORIAS', 'FAVORITOS', 'MINHA ESTANTE']
 
 function OptionsHeader() {
-    return (
-        <Opcoes>
-          { textoOpcoes.map( (texto) => (
-            <Opcao><p>{texto}</p></Opcao>
-          ) ) }
-        </Opcoes>
-    )
+  return (
+    <Options>
+      {textOptions.map((text) => (
+        <Option><p>{text}</p></Option>
+      ))}
+    </Options>
+  )
 }
 
 export default OptionsHeader;
