@@ -1,12 +1,10 @@
 const express = require('express')
+const bookRouter = require("./routes/books")
 
 const app = express()
-
 const port = 8000
 
-app.get('/', (req, res) => {
-    res.send("Olá, mundo!")
-})
+app.use('/books', bookRouter)
 
 app.listen(port, () => {
     console.log(`Escutando a porta ${port}`)
