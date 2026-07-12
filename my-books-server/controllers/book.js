@@ -1,5 +1,5 @@
 const fs = require("fs")
-const { getAllBooks, getBookById } = require("../services/books")
+const { getAllBooks, getBookById, insertBook } = require("../services/books")
 
 function getBooks (req, res){
     try{
@@ -22,8 +22,16 @@ function getBook(req, res) {
     }
 }
 
-function postBooks (req, res){
-    res.send('Você fez uma requisição do tipo POST')
+function postBook (req, res){
+    try{
+        const newBook = req.body
+        insertBook(newBook)
+        res.status(201)
+        res.send("Livro inserido com sucesso")
+    } catch (error) {
+        res.status(500)
+        res.send(error.message)
+    }
 }
 
 function patchBooks (req, res){
@@ -37,7 +45,7 @@ function deleteBooks (req, res){
 module.exports = {
     getBooks,
     getBook,
-    postBooks,
+    postBook,
     patchBooks,
     deleteBooks
 }
