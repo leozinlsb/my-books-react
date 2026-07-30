@@ -1,7 +1,7 @@
 import Input from '../Input'
 import styled from 'styled-components'
-import { useState } from 'react'
-import { books } from './searchData'
+import { useState, useEffect } from 'react'
+import { getBooks } from '../../services/books'
 
 const SearchContainer = styled.section`
     background : #EDE5CE;
@@ -24,7 +24,17 @@ const Subtitle = styled.h3`
 `
 
 function Search() {
-    const [researchedBooks, setResearchedBooks] = useState([])
+    const [researchedBooks, setResearchedBooks] = useState([]);
+    const [books, setBooks] = useState([]);
+
+    useEffect(() => {
+        fetchBooks();
+    }, []);
+
+    async function fetchBooks() {
+        const booksAPI = await getBooks();
+        setBooks(booksAPI);
+    };
 
     return (
         <SearchContainer>
